@@ -39,9 +39,14 @@ public class Parser
     private Node parseNumber()
     {
         this.expect(TokenType.NUM);
-        String value = this.value();
+        StringBuilder value = new StringBuilder(this.value());
+
         this.forward();
-        return new NodeNumber(value);
+        while (check(TokenType.NUM)){
+            value.append(this.value());
+            this.forward();
+        }
+        return new NodeNumber(value.toString());
     }
 
     private Node parseTerm()
