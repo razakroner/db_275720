@@ -51,34 +51,62 @@ public class Parser
 
     private Node parseTerm()
     {
-        Node left = this.parseNumber();
-        if (this.check(TokenType.MUL)) {
-            this.forward();
-            Node right = this.parseTerm();
-            return new NodeMul(left, right);
-        } else if (this.check(TokenType.DIV)) {
-            this.forward();
-            Node right = this.parseTerm();
-            return new NodeDiv(left, right);
+        if(check(TokenType.LB)){
+            return parseBracket();
         } else {
-            return left;
+            Node left = this.parseNumber();
+            if (this.check(TokenType.MUL)) {
+                this.forward();
+                Node right = this.parseTerm();
+                return new NodeMul(left, right);
+            } else if (this.check(TokenType.DIV)) {
+                this.forward();
+                Node right = this.parseTerm();
+                return new NodeDiv(left, right);
+            } else {
+                return left;
+            }
         }
     }
 
     private Node parseExpression()
     {
-        Node left = this.parseTerm();
-        if (this.check(TokenType.ADD)) {
-            this.forward();
-            Node right = this.parseExpression();
-            return new NodeAdd(left, right);
-        } else if (this.check(TokenType.SUB)) {
-            this.forward();
-            Node right = this.parseExpression();
-            return new NodeSub(left, right);
+        if(check(TokenType.LB)){
+            return parseBracket();
         } else {
-            return left;
+            Node left = this.parseTerm();
+            if (this.check(TokenType.ADD)) {
+                this.forward();
+                Node right = this.parseExpression();
+                return new NodeAdd(left, right);
+            } else if (this.check(TokenType.SUB)) {
+                this.forward();
+                Node right = this.parseExpression();
+                return new NodeSub(left, right);
+            } else {
+                return left;
+            }
         }
+    }
+
+    private Node parseBracket(){
+        forward();
+        Node expr = parseExpression();
+        if(check(TokenType.RB)){
+            forward();
+            Node nbracket = new NodeBracket(expr);
+            if(check(TokenType.ADD)) {
+                forward();
+                Node right = parseExpression();
+                return new NodeAdd(nodeBr, right);
+            } else if(check(TokenType.MUL)) {
+                forward();
+                Node right = parseExpression();
+                return new NodeMul(nodeBr, right);
+            }
+            return nbracket;
+        } else throw UnexpectedTokenException(this.ctoken, ctoken.getType());
+
     }
 
     private Node parseProgram()
