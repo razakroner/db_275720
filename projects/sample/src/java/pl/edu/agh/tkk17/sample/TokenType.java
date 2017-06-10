@@ -6,6 +6,10 @@ public enum TokenType
     NUM("NUM"),
     ADD("ADD"),
     MUL("MUL");
+    SUB("SUB");
+    DIV("DIV");
+    LB("LB");
+    RB("RB");
 
     private final String name;
 
