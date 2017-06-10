@@ -7,5 +7,5 @@ public interface NodeVisitor
     void visit(NodeSub node);
     void visit(NodeDiv node);
     void visit(NodeNumber node);
-    void visit(NodeBracker node);
+    void visit(NodeBracket node);
 }

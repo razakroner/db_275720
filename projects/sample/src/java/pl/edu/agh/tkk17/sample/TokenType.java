@@ -5,10 +5,10 @@ public enum TokenType
     END("END"),
     NUM("NUM"),
     ADD("ADD"),
-    MUL("MUL");
-    SUB("SUB");
-    DIV("DIV");
-    LB("LB");
+    MUL("MUL"),
+    SUB("SUB"),
+    DIV("DIV"),
+    LB("LB"),
     RB("RB");
 
     private final String name;

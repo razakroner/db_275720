@@ -98,14 +98,14 @@ public class Parser
             if(check(TokenType.ADD)) {
                 forward();
                 Node right = parseExpression();
-                return new NodeAdd(nodeBr, right);
+                return new NodeAdd(nbracket, right);
             } else if(check(TokenType.MUL)) {
                 forward();
                 Node right = parseExpression();
-                return new NodeMul(nodeBr, right);
+                return new NodeMul(nbracket, right);
             }
             return nbracket;
-        } else throw UnexpectedTokenException(this.ctoken, ctoken.getType());
+        } else throw new UnexpectedTokenException(this.ctoken, ctoken.getType());
 
     }
 

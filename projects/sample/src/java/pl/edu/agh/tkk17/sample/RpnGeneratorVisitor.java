@@ -59,7 +59,7 @@ public class RpnGeneratorVisitor implements NodeVisitor
     }
 
     public void visit(NodeBracket node){
-        String value = node.getValue();
+        node.visit(this);
         this.output.println("");
     }
 }

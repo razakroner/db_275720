@@ -2,7 +2,7 @@ package pl.edu.agh.tkk17.sample;
 
 public class NodeBracket extends Node
 {
-    private Node node
+    private Node node;
 
     public NodeBracket(Node node)
     {
