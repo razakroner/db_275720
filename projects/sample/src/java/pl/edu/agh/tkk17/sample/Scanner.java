@@ -65,11 +65,11 @@ public class Scanner implements Iterator<Token>, Iterable<Token>
             this.readChar();
 
         } else if (character == '(') {
-            token = this.makeToken(TokenType.LB);
+            token = this.makeToken(TokenType.LBR);
             this.readChar();
 
         } else if (character == ')') {
-            token = this.makeToken(TokenType.RB);
+            token = this.makeToken(TokenType.RBR);
             this.readChar();
 
         } else if (character >= '0' && character <= '9') {

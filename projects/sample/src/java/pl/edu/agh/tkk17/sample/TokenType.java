@@ -8,8 +8,8 @@ public enum TokenType
     MUL("MUL"),
     SUB("SUB"),
     DIV("DIV"),
-    LB("LB"),
-    RB("RB");
+    LBR("LBR"),
+    RBR("RBR");
 
     private final String name;
 

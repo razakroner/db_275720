@@ -51,7 +51,7 @@ public class Parser
 
     private Node parseTerm()
     {
-        if(check(TokenType.LB)){
+        if(check(TokenType.LBR)){
             return parseBracket();
         } else {
             Node left = this.parseNumber();
@@ -71,7 +71,7 @@ public class Parser
 
     private Node parseExpression()
     {
-        if(check(TokenType.LB)){
+        if(check(TokenType.LBR)){
             return parseBracket();
         } else {
             Node left = this.parseTerm();
@@ -92,7 +92,7 @@ public class Parser
     private Node parseBracket(){
         forward();
         Node expr = parseExpression();
-        if(check(TokenType.RB)){
+        if(check(TokenType.RBR)){
             forward();
             Node nbracket = new NodeBracket(expr);
             if(check(TokenType.ADD)) {
