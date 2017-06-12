@@ -14,7 +14,7 @@ public class Interpreter
             if (result - Math.floor(result) > 0) {
                 repr = String.valueOf(result);
             } else {
-                float intval = Math.round(result);
+                int intval = Math.round(result);
                 repr = String.valueOf(intval);
             }
             System.out.println(repr);
